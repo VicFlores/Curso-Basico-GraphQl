@@ -1,0 +1,31 @@
+{
+  "name": "curso-basico--graphql",
+  "version": "1.0.0",
+  "description": "Curso basico de GraphQl",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --exec babel-node ./src/server.js",
+    "dev": "nodemon --exec babel-node ./src/server.js"
+  },
+  "author": "Vic Ferman Flores Escobar",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.19.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.4.0",
+    "mongoose": "^5.11.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
