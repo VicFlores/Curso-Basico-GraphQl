@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-require('dotenv').config({ path: 'keys.env' });
+require('dotenv').config({ path: '.env' });
 
 const config = {
   useNewUrlParser: true,
@@ -12,7 +12,7 @@ const config = {
 const db = async () => {
   try {
     await mongoose.connect(process.env.MONGODB, config);
-    console.log('Database is connected');
+    console.log('🔌 Database is connected 🔌');
   } catch (error) {
     console.error(`Database error: ${error}`);
   }
