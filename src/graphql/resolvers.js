@@ -1,7 +1,17 @@
+/* eslint-disable no-underscore-dangle */
 import Course from '../models/Course';
 import Student from '../models/Student';
 
 const resolvers = {
+  Result: {
+    __resolveType(obj, ctx, info) {
+      if (obj.title) {
+        return 'Course';
+      }
+
+      return 'Student';
+    },
+  },
   Query: {
     getCourses: async () => {
       try {
@@ -76,6 +86,24 @@ const resolvers = {
       try {
         await Student.findByIdAndDelete({ _id: id });
         return 'Estudiante Eliminado';
+      } catch (error) {
+        return new Error(error);
+      }
+    },
+    addStudent: async (obj, { courseID, studentID }) => {
+      try {
+        const course = await Course.findById({ _id: courseID });
+        const student = await Student.findById({ _id: studentID });
+
+        if (!course || !student) {
+          return new Error('Curso o estudiante no existente');
+        }
+        const courseStudent = await Course.findByIdAndUpdate(
+          { _id: courseID },
+          { student: studentID },
+          { new: true },
+        );
+        return courseStudent;
       } catch (error) {
         return new Error(error);
       }
